@@ -6,6 +6,6 @@ class Conexion
 
     public function conectar()
     {
-        $this->con = mysqli_connect("localhost", "root", "", "Poo");
+        $this->con = mysqli_connect("localhost", "root", "", "poo");
     }
 }
