@@ -4,7 +4,7 @@ class Conexion{
     private $host = "localhost";
     private $user = "root";
     private $password = "";
-    private $database = "issp";
+    private $database = "alumnohtml";
     public $con;
 
     public function conectar(){

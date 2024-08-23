@@ -13,4 +13,20 @@ class Alumno extends Conexion {
         $pre->execute();
     }
 
+public static function all(){
+    $conexion = new Conexion();
+    $conexion->conectar();
+    $result =mysqli_prepare($conexion->con, "SELECT * FROM alumnos");
+    $result->execute();
+    $valoresDb = $result-> get_result();
+
+    $alumnos = [];
+    while ($alumno = $valoresDb->fetch_object(Alumno::class)){
+        $alumnos[] = $alumno;
+    }
+    return $alumnos;
+
 }
+
+}
+
