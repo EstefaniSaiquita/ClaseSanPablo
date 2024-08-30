@@ -8,7 +8,7 @@ class Alumno extends Conexion {
 
     public function create() {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "INSERT INTO alumnos (nombre, apellido, fecha_nacimiento) VALUES (?, ?, ?)");
+        $pre = mysqli_prepare($this->con, "INSERT INTO alumno (nombre, apellido, fecha_nacimiento) VALUES (?, ?, ?)");
         $pre->bind_param("sss", $this->nombre, $this->apellido, $this->fecha_nacimiento);
         $pre->execute();
     }
@@ -16,17 +16,38 @@ class Alumno extends Conexion {
 public static function all(){
     $conexion = new Conexion();
     $conexion->conectar();
-    $result =mysqli_prepare($conexion->con, "SELECT * FROM alumnos");
+    $result =mysqli_prepare($conexion->con, "SELECT * FROM alumno");
     $result->execute();
     $valoresDb = $result-> get_result();
-
     $alumnos = [];
     while ($alumno = $valoresDb->fetch_object(Alumno::class)){
-        $alumnos[] = $alumno;
+        $alumnos[] = $alumno;  
+        // array_push($alumnos, $alumno);
     }
     return $alumnos;
-
 }
+    public static function getById($id){
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $result =mysqli_prepare($conexion->con, "SELECT * FROM alumno where id = ?");
+        $result->bind_param("i", $id);
+        $result->execute();
+        $valoresDb = $result-> get_result();
+        $alumno = $valoresDb->fetch_object(Alumno::class);
+        return $alumno;
+    }
+    
+    public function delete(){
+        $this->conectar();
+        $pre = mysqli_prepare($this->con, "DELETE FROM alumno WHERE id = ?");
+        $pre->bind_param("i", $this->id);
+        $pre->execute();
+    }
 
+    public function update(){
+        $this->conectar();
+        $pre = mysqli_prepare($this->con, "UPDATE alumno SET nombre=?, apellido=?, fecha_nacimiento=? WHERE id= ?");
+        $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->fecha_nacimiento, $this->id);
+        $pre->execute();
+    }
 }
-

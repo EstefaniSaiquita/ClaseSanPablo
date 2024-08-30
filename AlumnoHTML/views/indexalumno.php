@@ -31,15 +31,15 @@ margin: 20px;
 <h2 class="pull-left">Lista de Usuarios</h2>
 </div>
 <table id="listaUsuarios" class="table table-sm table-striped table-bordered" style="width:100%">
-<thead>
-<tr>
-    <th>Id</th>
-    <th>Nombre</th>
-    <th>Apellido</th>
-    <th>Fecha Nacimiento</th>
-    <th></th>
-</tr>
-</thead>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha Nacimiento</th>
+            <th></th>
+        </tr>
+    </thead>
 <tbody>
     <!-- <tr>
         <td>1</td>
@@ -49,17 +49,17 @@ margin: 20px;
     </tr> -->
     <?php
     foreach ($alumnos as $alumnos) { ?>
-      <tr>
+    <tr>
         <td><?= $alumnos->id; ?></td>
         <td><?= $alumnos->nombre; ?></td>
         <td><?= $alumnos->apellido; ?></td>
         <td><?= date('D/M/Y', strtotime
         ($alumnos->fecha_nacimiento)); ?></td>
 
-        <td> //BOTONES EDITAR-ELIMINAR 
+        <td> <!-- BOTONES EDITAR-ELIMINAR  -->
             <div class="btn-group">
-                <a href= "editarAlumno.php?id<?= $alumnos->id; ?> " class="btn-warning btn-sm">editar</a>
-                <a href= "eliminarAlumno.php?id<?= $alumnos->id; ?> " class="btn-danger btn-sm">eliminar</a>
+                <a href= "editarAlumno.php?id=<?= $alumnos->id; ?> " class="btn-warning btn-sm">editar</a>
+                <a href= "eliminarAlumno.php?id=<?= $alumnos->id; ?> " class="btn-danger btn-sm">eliminar</a>
             </div>
         </td>
     </tr>

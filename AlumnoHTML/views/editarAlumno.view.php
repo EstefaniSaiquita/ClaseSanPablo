@@ -15,9 +15,6 @@
 </head>
 
 <body>
-<button>
-        <a href="indexAlumno.php" style="text-decoration: none; color:black; font-size:17px">Volver atrás ↩️</a>
-    </button>
 
     <div class="container">
         <div class="row mt-5">
@@ -25,25 +22,25 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <h3>Crear Alumno</h3>
+                        <h3>Editar Alumno - ID: <?= $alumno->id ?></h3>
                     </div>
                     <div class="card-body">
 
                         <form action="" method="post">
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
-                                <input type="text" name="nombre" id="nombre" class="form-control">
+                                <input type="text" value="<?= $alumno->nombre ?>" name="nombre" id="nombre" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="apellido">Apellido</label>
-                                <input type="text" name="apellido" id="apellido" class="form-control">
+                                <input type="text" value="<?= $alumno->apellido ?>" name="apellido" id="apellido" class="form-control">
                             </div>
                             <div class="form-group" id="fecha_nacimiento">
                                 <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control">
+                                <input type="date" value="<?= $alumno->fecha_nacimiento ?>" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control">
                             </div>
-                            <button type="submit" name="enviarFormulario" class="btn btn-primary">
-                                <i class="fas fa fa-send">Enviar</i>
+                            <button type="submit" name="actualizarDatos" class="btn btn-primary">
+                                <i class="fas fa fa-send">Actualizar</i>
                             </button>
 
                         </form>
