@@ -1,6 +1,6 @@
 <?php
 
-require_once "../model/alumno.php";
+require_once __DIR__ . "../model/alumno.php";
 
 $id = $_GET['id'];
 
