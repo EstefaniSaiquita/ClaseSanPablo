@@ -9,6 +9,7 @@ $materias = Materias::getById($id);
 if ($materias) {
     $materias->delete();
     header('Location: ../controllers/Materias/indexMaterias.php');
+    
 }
 
 echo $id;
