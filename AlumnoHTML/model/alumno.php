@@ -1,6 +1,7 @@
 <?php
 
 require_once 'conexion.php';
+require_once __DIR__ . "/Materias/materias.php";
 
 class Alumno extends Conexion {
 
@@ -49,5 +50,31 @@ public static function all(){
         $pre = mysqli_prepare($this->con, "UPDATE alumno SET nombre=?, apellido=?, fecha_nacimiento=? WHERE id= ?");
         $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->fecha_nacimiento, $this->id);
         $pre->execute();
+    }
+
+    public function materias(){
+        $this->conectar();
+        $result = mysqli_prepare($this->con, "SELECT materias.* FROM materias INNER JOIN alumno_materia ON materia.id = alumno_materia.materia_id where alumno_materia.alumno_id = ?");
+        $result->bind_param("i", $this->id);
+        $result->execute();
+        $valoresDb = $result->get_result();
+        $materias = [];
+        while ($materia = $valoresDb->fetch_object(Materias::class)){
+            $materias[] = $materia;
+        }
+        return $materias;
+    }
+
+    public function alumnos(){
+        $this->conectar();
+        $result = mysqli_prepare($this->con, "SELECT materias.* FROM materias INNER JOIN alumno_materia ON materia.id = alumno_materia.materia_id where alumno_materia.alumno_id = ?");
+        $result->bind_param("i", $this->id);
+        $result->execute();
+        $valoresDb = $result->get_result();
+        $materias = [];
+        while ($materia = $valoresDb->fetch_object(Materias::class)){
+            $materias[] = $materia;
+        }
+        return $materias;
     }
 }

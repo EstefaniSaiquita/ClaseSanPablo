@@ -22,14 +22,14 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <h3>Editar Materia - ID: <?= $alumno->id ?></h3>
+                        <h3>Editar Materia - ID: <?= $materia->id ?></h3>
                     </div>
                     <div class="card-body">
 
                         <form action="" method="post">
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
-                                <input type="text" value="<?= $alumno->nombre ?>" name="nombre" id="nombre" class="form-control">
+                                <input type="text" value="<?= $materia->nombre ?>" name="nombre" id="nombre" class="form-control">
                             </div>
                             <button type="submit" name="actualizarDatos" class="btn btn-primary">
                                 <i class="fas fa fa-send">Actualizar</i>

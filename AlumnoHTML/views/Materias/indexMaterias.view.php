@@ -39,15 +39,15 @@ margin: 20px;
     </thead>
 <tbody>
     <?php
-    foreach ($Materias as $Materias) { ?>
+    foreach ($materias as $materia) { ?>
     <tr>
-        <td><?= $Materias->id; ?></td>
-        <td><?= $Materias->nombre; ?></td>
+        <td><?= $materia->id; ?></td>
+        <td><?= $materia->nombre; ?></td>
 
         <td> <!-- BOTONES EDITAR-ELIMINAR  -->
             <div class="btn-group">
-                <a href= "editarMaterias.php?id=<?= $Materias->id; ?> " class="btn-warning btn-sm">editar</a>
-                <a href= "eliminarMaterias.php?id=<?= $Materias->id; ?> " class="btn-danger btn-sm">eliminar</a>
+                <a href= "editarMaterias.php?id=<?= $materia->id; ?> " class="btn-warning btn-sm">editar</a>
+                <a href= "eliminarMaterias.php?id=<?= $materia->id; ?> " class="btn-danger btn-sm">eliminar</a>
             </div>
         </td>
     </tr>
