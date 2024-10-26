@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../conexion.php';
-require_once __DIR__ ."/../profesor.php";
+require_once __DIR__ . "../../model/conexion.php";
+require_once __DIR__ ."../../model/profesor.php";
 
 class Materias extends Conexion {
 
@@ -9,7 +9,7 @@ class Materias extends Conexion {
 
     public function create() {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "INSERT INTO alumno (nombre) VALUES (?)");
+        $pre = mysqli_prepare($this->con, "INSERT INTO materias (nombre) VALUES (?)");
         $pre->bind_param("s", $this->nombre);
         $pre->execute();
     }

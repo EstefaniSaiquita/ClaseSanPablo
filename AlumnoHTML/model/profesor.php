@@ -1,7 +1,7 @@
 <?php
 
-require_once 'conexion.php';
-require_once __DIR__ . "/Materias/materias.php";
+require_once __DIR__ . '../../model/conexion.php';
+require_once __DIR__ . "../../model/materias.php";
 
 class Profesor extends Conexion {
 

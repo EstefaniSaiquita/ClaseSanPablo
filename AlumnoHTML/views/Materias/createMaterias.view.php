@@ -11,13 +11,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- Include fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
-    
+
 </head>
 
 <body>
-<button>
-        <a href="indexAlumno.php" style="text-decoration: none; color:black; font-size:17px">Volver atrás ↩️</a>
-    </button>
+
+    <a href="indexMaterias.php"><button>Volver atrás ↩️</button></a>
 
     <div class="container">
         <div class="row mt-5">

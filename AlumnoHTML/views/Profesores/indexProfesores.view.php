@@ -24,35 +24,45 @@
 </head>
 
 <body>
-<a href="../Alumnos/indexAlumno.php"><button>Alumnos</button></a> 
-<a href="../Profesores/indexProfesores.php"><button>Profesores</button></a> 
+    <a href="../Materias/indexMaterias.php"> <button>Materias</button></a>
+    <a href="../Alumnos/indexAlumno.php"><button>Alumnos</button></a>
     <div class="bs-example">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                        <a href="createMaterias.php">Crear Materia</a>
-                        <h2 class="pull-left">Lista de Materias</h2>
+                        <a href="createProfesores.php">Crear Profesor</a>
+                        <h2 class="pull-left">Lista de Profesores</h2>
                     </div>
                     <table id="listaUsuarios" class="table table-sm table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Materia_id</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- <tr>
+        <td>1</td>
+        <td>Estefani</td>
+        <td>Saiquita</td>
+        <td>21.12.2002</td>
+    </tr> -->
                             <?php
-                            foreach ($materias as $materia) { ?>
+                            foreach ($profesores as $profesor) { ?>
                                 <tr>
-                                    <td><?= $materia->id; ?></td>
-                                    <td><?= $materia->nombre; ?></td>
+                                    <td><?= $profesor->id; ?></td>
+                                    <td><?= $profesor->nombre; ?></td>
+                                    <td><?= $profesor->apellido; ?></td>
+                                    <td><?= $profesor->materia_id; ?></td>
 
                                     <td> <!-- BOTONES EDITAR-ELIMINAR  -->
                                         <div class="btn-group">
-                                            <a href="editarMaterias.php?id=<?= $materia->id; ?> " class="btn-warning btn-sm">editar</a>
-                                            <a href="eliminarMaterias.php?id=<?= $materia->id; ?> " class="btn-danger btn-sm">eliminar</a>
+                                            <a href="editarProfesores.php?id=<?= $profesor->id; ?> " class="btn-warning btn-sm">editar</a>
+                                            <a href="eliminarProfesores.php?id=<?= $profesor->id; ?> " class="btn-danger btn-sm">eliminar</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -62,3 +72,24 @@
                             ?>
 
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Materia</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function() {
+        $('#listaUsuarios').DataTable({});
+    });
+</script>
+
+</html>

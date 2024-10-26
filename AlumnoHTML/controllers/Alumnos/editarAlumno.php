@@ -1,6 +1,6 @@
 <?php
 
-require_once "../model/alumno.php";
+require_once __DIR__ ."../../../model/alumno.php";
 
 $id = $_GET['id'];
 
@@ -16,12 +16,12 @@ if(isset($_POST['actualizarDatos'])){
     $alumno->update();
 
 
-    header('location: ../controllers/indexAlumno.php');
+    header('location: ../../controllers/Alumnos/indexAlumno.php');
 
 } else{
     $alumno = Alumno::getById($id);
     if ($alumno) {
-        require_once "../views/editarAlumno.view.php";
+        require_once "../../views/Alumno/editarAlumno.view.php";
 }
 
 }

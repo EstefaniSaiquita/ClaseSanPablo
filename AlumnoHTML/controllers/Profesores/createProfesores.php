@@ -1,6 +1,6 @@
 <?php
 
-require_once "../model/Materias/materias.php";
+require_once __DIR__. "../../../model/profesor.php";
 
 if (isset($_POST['enviarFormulario'])) {
     $nombre = $_POST['nombre'];
@@ -14,11 +14,10 @@ if (isset($_POST['enviarFormulario'])) {
     $profesor->materia_id = $materia_id;
     $profesor->create();
 
-}else{
-    echo"no se presiono el boton";
+    header('Location: ../../controllers/Profesores/indexProfesores.php');
 }
 // require_once __DIR__ . "/../model/Materia/materia.php";
 
 $materias = Materias::all();
 
-require_once __DIR__ . "/../views/createProfesor.view.php";
+require_once __DIR__ . "../../../views/Profesores/createProfesores.view.php";

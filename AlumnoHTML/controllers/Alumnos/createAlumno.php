@@ -1,21 +1,19 @@
 <?php
 
-require_once "../model/alumno.php";
+require_once __DIR__ . "../../../model/alumno.php";
 
 if (isset($_POST['enviarFormulario'])) {
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $fecha_nacimiento = $_POST['fecha_nacimiento'];
-    echo "se presiono el boton del formulario";
 
     $alumno = new Alumno();
     $alumno->nombre = $nombre;
     $alumno->apellido = $apellido;
     $alumno->fecha_nacimiento = $fecha_nacimiento;
     $alumno->create();
-
-}else{
-    echo"no se presiono el boton";
+    
+    header('location: ../../controllers/Alumnos/indexAlumno.php');
 }
 
-require_once "../views/createAlumno.view.php";
+require_once "../../views/Alumno/createAlumno.view.php";

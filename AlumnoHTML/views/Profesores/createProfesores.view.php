@@ -16,7 +16,7 @@
 
 <body>
 <button>
-        <a href="indexAlumno.php" style="text-decoration: none; color:black; font-size:17px">Volver atrás ↩️</a>
+        <a href="indexProfesores.php">Volver atrás ↩️</a>
     </button>
 
     <div class="container">
@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <h3>Crear Alumno</h3>
+                        <h3>Crear Profesor</h3>
                     </div>
                     <div class="card-body">
 

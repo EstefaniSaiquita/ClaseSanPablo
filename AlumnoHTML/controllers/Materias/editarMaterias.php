@@ -1,6 +1,5 @@
 <?php
-require_once __DIR__ ."/../../model/Materias/materias.php";
-// require_once "../AlumnoHTML/model/Materias/materias.php";
+require_once __DIR__ ."../../../model/materias.php";
 
 $id = $_GET['id'];
 
@@ -13,7 +12,7 @@ if(isset($_POST['actualizarDatos'])){
 
 
     // header('location: /AlumnoHTML/controllers/Materias/indexMaterias.php');
-    header('location: ../Materias/indexMaterias.php');
+    header('location: ../../controllers/Materias/indexMaterias.php'); //redirecciona
 
 
 } else{
