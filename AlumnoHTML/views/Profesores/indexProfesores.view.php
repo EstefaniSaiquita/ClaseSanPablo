@@ -26,6 +26,7 @@
 <body>
     <a href="../Materias/indexMaterias.php"> <button>Materias</button></a>
     <a href="../Alumnos/indexAlumno.php"><button>Alumnos</button></a>
+    <a href=""><button>Dashboard</button></a>
     <div class="bs-example">
         <div class="container">
             <div class="row">
@@ -41,7 +42,7 @@
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Materia_id</th>
-                                <th></th>
+                                <th>Accion</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,6 +79,7 @@
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Materia</th>
+                                <th>Accion</th>
                             </tr>
                         </tfoot>
                     </table>

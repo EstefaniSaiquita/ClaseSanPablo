@@ -25,7 +25,8 @@
 
 <body>
 <a href="../Alumnos/indexAlumno.php"><button>Alumnos</button></a> 
-<a href="../Profesores/indexProfesores.php"><button>Profesores</button></a> 
+<a href="../Profesores/indexProfesores.php"><button>Profesores</button></a>
+<a href=""><button>Dashboard</button></a>
     <div class="bs-example">
         <div class="container">
             <div class="row">
@@ -39,7 +40,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nombre</th>
-                                <th></th>
+                                <th>Accion</th>
                             </tr>
                         </thead>
                         <tbody>

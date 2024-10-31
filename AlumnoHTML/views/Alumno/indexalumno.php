@@ -24,14 +24,15 @@
 </head>
 
 <body>
-    <a href="../Materias/indexMaterias.php"> <button>Materias</button></a> 
+    <a href="../Materias/indexMaterias.php"> <button>Materias</button></a>
     <a href="../Profesores/indexProfesores.php"> <button>Profesores</button></a>
+    <a href=""><button>Dashboard</button></a>
     <div class="bs-example">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header clearfix">
-                    <a href="createAlumno.php">Crear Alumno</a> 
+                        <a href="createAlumno.php">Crear Alumno</a>
                         <h2 class="pull-left">Lista de Alumnos</h2>
                     </div>
                     <table id="listaUsuarios" class="table table-sm table-striped table-bordered" style="width:100%">
@@ -41,7 +42,8 @@
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Fecha Nacimiento</th>
-                                <th></th>
+                                <th>Materias</th>
+                                <th>Accion</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,7 +61,16 @@
                                     <td><?= $alumnos->apellido; ?></td>
                                     <td><?= date('D/M/Y', strtotime($alumnos->fecha_nacimiento)); ?></td>
 
-                                    <td> <!-- BOTONES EDITAR-ELIMINAR  -->
+                        <!-- FOREACH PARA RECORRER TODAS LAS MATERIAS -->
+                                    <td>
+                                        <ul>
+                                            <?php
+                                            foreach ($materias as $materias) ?>
+                                            <li><?php echo $materias->nombre; ?></li>
+                                        </ul>
+                                    </td> 
+                        <!-- BOTONES EDITAR-ELIMINAR  -->
+                                    <td>
                                         <div class="btn-group">
                                             <a href="editarAlumno.php?id=<?= $alumnos->id; ?> " class="btn-warning btn-sm">editar</a>
                                             <a href="eliminarAlumno.php?id=<?= $alumnos->id; ?> " class="btn-danger btn-sm">eliminar</a>
@@ -78,6 +89,8 @@
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Fecha Nacimiento</th>
+                                <th>Materias</th>
+                                <th>Accion</th>
                             </tr>
                         </tfoot>
                     </table>

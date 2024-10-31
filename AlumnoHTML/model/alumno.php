@@ -5,7 +5,6 @@ require_once __DIR__ . "../../model/materias.php";
 
 class Alumno extends Conexion
 {
-
     public $id, $nombre, $apellido, $fecha_nacimiento;
 
     public function create()
@@ -58,18 +57,26 @@ class Alumno extends Conexion
         $pre->execute();
     }
 
-    // public function materias(){
-    //     $this->conectar();
-    //     $result = mysqli_prepare($this->con, "SELECT materias.* FROM materias INNER JOIN alumno_materia ON materia.id = alumno_materia.materia_id where alumno_materia.alumno_id = ?");
-    //     $result->bind_param("i", $this->id);
-    //     $result->execute();
-    //     $valoresDb = $result->get_result();
-    //     $materias = [];
-    //     while ($materia = $valoresDb->fetch_object(Materias::class)){
-    //         $materias[] = $materia;
-    //     }
-    //     return $materias;
-    // }
+    public function materias(){
+        $this->conectar();
+        $result = mysqli_prepare($this->con, "SELECT materias.* FROM materias INNER JOIN alumno_materia ON materia.id = alumno_materia.materia_id where alumno_materia.alumno_id = ?");
+        $result->bind_param("i", $this->id);
+        $result->execute();
+        $valoresDb = $result->get_result();
+        $materias = [];
+        while ($materia = $valoresDb->fetch_object(Materias::class)){
+            $materias[] = $materia;
+        }
+        return $materias;
+    }
+
+    public function asignarMateria($id_materia){
+$this->conectar();
+$pre = mysqli_prepare($this->con, "SELECT INTO alumnos_materias (id_alumno, id_materia) VALUES(?,?)");
+$pre->bind_param("ii", $this->id, $id_materia);
+$pre->execute();
+    }
+
 
     // public function alumnos(){
     //     $this->conectar();

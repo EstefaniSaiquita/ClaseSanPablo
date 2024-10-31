@@ -2,6 +2,7 @@
 
 require_once __DIR__ . "../../model/conexion.php";
 require_once __DIR__ ."../../model/profesor.php";
+require_once __DIR__ . "../../model/alumno.php";
 
 class Materias extends Conexion {
 
@@ -68,7 +69,7 @@ public function profesores(){
 
     public function alumnos(){
         $this->conectar();
-        $result = mysqli_prepare($this->con, "SELECT alumnos.* FROM alumnos INNER JOIN alumno_materia ON alumno.id = alumno_materia.alumno_id where alumno_materia.materia_id = ?");
+        $result = mysqli_prepare($this->con, "SELECT alumnos.* FROM alumnos INNER JOIN alumno_materia ON alumno.id = alumno_materia.id_materia where alumno_materia.id_materia = ?");
         $result->bind_param("i", $this->id);
         $result->execute();
         $valoresDb = $result->get_result();
