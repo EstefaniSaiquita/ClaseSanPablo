@@ -67,9 +67,10 @@ public function profesores(){
         $pre->execute();
     }
 
+    //PARA ASIGNAR
     public function alumnos(){
         $this->conectar();
-        $result = mysqli_prepare($this->con, "SELECT alumnos.* FROM alumnos INNER JOIN alumno_materia ON alumno.id = alumno_materia.id_materia where alumno_materia.id_materia = ?");
+        $result = mysqli_prepare($this->con, "SELECT alumnos.* FROM alumnos INNER JOIN alumnos_materias ON alumnos.id = alumnos_materias.id_materia where alumno_materia.id_materia = ?");
         $result->bind_param("i", $this->id);
         $result->execute();
         $valoresDb = $result->get_result();

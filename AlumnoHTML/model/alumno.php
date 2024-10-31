@@ -57,24 +57,28 @@ class Alumno extends Conexion
         $pre->execute();
     }
 
-    public function materias(){
+// PARA SELECCIONAR MUCHAS MATERIAS
+
+    public function materias()
+    {
         $this->conectar();
-        $result = mysqli_prepare($this->con, "SELECT materias.* FROM materias INNER JOIN alumno_materia ON materia.id = alumno_materia.materia_id where alumno_materia.alumno_id = ?");
+        $result = mysqli_prepare($this->con, "SELECT materias.* FROM materias INNER JOIN alumnos_materias ON materia.id = alumnos_materias.id_materia where alumnos_materias.id_alumno = ?");
         $result->bind_param("i", $this->id);
         $result->execute();
         $valoresDb = $result->get_result();
         $materias = [];
-        while ($materia = $valoresDb->fetch_object(Materias::class)){
+        while ($materia = $valoresDb->fetch_object(Materias::class)) {
             $materias[] = $materia;
         }
         return $materias;
     }
 
-    public function asignarMateria($id_materia){
-$this->conectar();
-$pre = mysqli_prepare($this->con, "SELECT INTO alumnos_materias (id_alumno, id_materia) VALUES(?,?)");
-$pre->bind_param("ii", $this->id, $id_materia);
-$pre->execute();
+    public function asignarMateria($id_materia)
+    {
+        $this->conectar();
+        $pre = mysqli_prepare($this->con, "SELECT INTO alumnos_materias (id_alumno, id_materia) VALUES(?,?)");
+        $pre->bind_param("ii", $this->id, $id_materia);
+        $pre->execute();
     }
 
 
