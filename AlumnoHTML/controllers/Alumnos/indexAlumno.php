@@ -1,8 +1,9 @@
 <?php
 require_once __DIR__ . "../../../model/alumno.php";
+require_once __DIR__ . "../../../model/materias.php";
 
 $alumnos = Alumno::all();
-
+$materias = Materia::all();
 class materiasAlumnos
 {
     public function asignarMateria($id_alumno, $id_materia)
@@ -19,6 +20,8 @@ class materiasAlumnos
         $alumno->id = $id_alumno;
         $materias = $alumno->materias();
     }
+
+    
 }
 
 

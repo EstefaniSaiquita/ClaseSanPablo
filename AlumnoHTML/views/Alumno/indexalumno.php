@@ -54,12 +54,12 @@
         <td>21.12.2002</td>
     </tr> -->
                             <?php
-                            foreach ($alumnos as $alumnos) { ?>
+                            foreach ($alumnos as $alumno) { ?>
                                 <tr>
-                                    <td><?= $alumnos->id; ?></td>
-                                    <td><?= $alumnos->nombre; ?></td>
-                                    <td><?= $alumnos->apellido; ?></td>
-                                    <td><?= date('D/M/Y', strtotime($alumnos->fecha_nacimiento)); ?></td>
+                                    <td><?= $alumno->id; ?></td>
+                                    <td><?= $alumno->nombre; ?></td>
+                                    <td><?= $alumno->apellido; ?></td>
+                                    <td><?= date('D/M/Y', strtotime($alumno->fecha_nacimiento)); ?></td>
 
                         <!-- FOREACH PARA RECORRER TODAS LAS MATERIAS -->
                                     <td>
@@ -72,8 +72,8 @@
                         <!-- BOTONES EDITAR-ELIMINAR  -->
                                     <td>
                                         <div class="btn-group">
-                                            <a href="editarAlumno.php?id=<?= $alumnos->id; ?> " class="btn-warning btn-sm">editar</a>
-                                            <a href="eliminarAlumno.php?id=<?= $alumnos->id; ?> " class="btn-danger btn-sm">eliminar</a>
+                                            <a href="editarAlumno.php?id=<?= $alumno->id; ?> " class="btn-warning btn-sm">editar</a>
+                                            <a href="eliminarAlumno.php?id=<?= $alumno->id; ?> " class="btn-danger btn-sm">eliminar</a>
                                         </div>
                                     </td>
                                 </tr>

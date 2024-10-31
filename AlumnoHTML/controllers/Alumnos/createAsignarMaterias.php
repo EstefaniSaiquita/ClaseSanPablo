@@ -11,12 +11,14 @@ class AlumnoMaterias
 
         header("Location: ");
     }
+
+    public function mostrarMaterias($id_alumno){
+        $alumno = new Alumno();
+        $id_alumno = $alumno->id ;
+        $materias = $alumno->materias();
+    
+        require_once __DIR__ . "../../../views/Alumno/asignarMateria.view.php";
+    }
 }
 
-function mostrarMaterias($id_alumno){
-    $alumno = new Alumno();
-    $alumno->id = $id_alumno;
-    $materias = $alumno->materias();
 
-    require_once __DIR__ . "../../../views/Alumno/asignarMateria.view.php"
-}
