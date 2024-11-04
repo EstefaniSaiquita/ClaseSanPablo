@@ -5,7 +5,7 @@ require_once __DIR__ . "../../model/materias.php";
 
 class Profesor extends Conexion {
 
-    public $id, $nombre, $apellido, $materia_id;
+    public $id_profesores, $nombre, $apellido, $materia_id;
 
     public function create() {
         $this->conectar();
@@ -35,7 +35,7 @@ public function materia(){
     public static function getById($id){
         $conexion = new Conexion();
         $conexion->conectar();
-        $result =mysqli_prepare($conexion->con, "SELECT * FROM profesores where id = ?");
+        $result =mysqli_prepare($conexion->con, "SELECT * FROM profesores where id_profesores = ?");
         $result->bind_param("i", $id);
         $result->execute();
         $valoresDb = $result-> get_result();
@@ -45,15 +45,15 @@ public function materia(){
     
     public function delete(){
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "DELETE FROM profesores WHERE id = ?");
-        $pre->bind_param("i", $this->id);
+        $pre = mysqli_prepare($this->con, "DELETE FROM profesores WHERE id_profesores = ?");
+        $pre->bind_param("i", $this->id_profesores);
         $pre->execute();
     }
 
     public function update(){
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "UPDATE profesores SET nombre=?, apellido=?, materia_id=? WHERE id= ?");
-        $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->materia_id, $this->id);
+        $pre = mysqli_prepare($this->con, "UPDATE profesores SET nombre=?, apellido=?, materia_id=? WHERE id_profesores= ?");
+        $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->materia_id, $this->id_profesores);
         $pre->execute();
     }
 }

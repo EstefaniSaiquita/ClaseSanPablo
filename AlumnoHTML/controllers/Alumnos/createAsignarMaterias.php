@@ -6,7 +6,7 @@ class AlumnoMaterias
     public function asignarMateria($id_alumno, $id_materia)
     {
         $alumno = new Alumno();
-        $alumno->id = $id_alumno;
+        $alumno->id_alumnos = $id_alumno;
         $alumno->asignarMateria($id_materia);
 
         header("Location: ");
@@ -14,7 +14,7 @@ class AlumnoMaterias
 
     public function mostrarMaterias($id_alumno){
         $alumno = new Alumno();
-        $id_alumno = $alumno->id ;
+        $id_alumno = $alumno->id_alumnos ;
         $materias = $alumno->materias();
     
         require_once __DIR__ . "../../../views/Alumno/asignarMateria.view.php";

@@ -42,10 +42,19 @@
                                 <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                                 <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control">
                             </div>
+
                             <button type="submit" name="enviarFormulario" class="btn btn-primary">
                                 <i class="fas fa fa-send">Enviar</i>
                             </button>
 
+
+                            <?php 
+                            foreach ($materias as $materia){
+                                ?> 
+                                <input type="checkbox" name="seleccionMaterias[]" id="" value="<?=$materia->id?>"><?=$materia->nombre?> 
+                                <?php
+                            }
+                            ?>
                         </form>
 
                     </div>

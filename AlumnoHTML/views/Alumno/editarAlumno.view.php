@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <h3>Editar Alumno - ID: <?= $alumno->id ?></h3>
+                        <h3>Editar Alumno - ID: <?= $alumno->id_alumnos ?></h3>
                     </div>
                     <div class="card-body">
 

@@ -56,24 +56,30 @@
                             <?php
                             foreach ($alumnos as $alumno) { ?>
                                 <tr>
-                                    <td><?= $alumno->id; ?></td>
+                                    <td><?= $alumno->id_alumnos; ?></td>
                                     <td><?= $alumno->nombre; ?></td>
                                     <td><?= $alumno->apellido; ?></td>
-                                    <td><?= date('D/M/Y', strtotime($alumno->fecha_nacimiento)); ?></td>
-
-                        <!-- FOREACH PARA RECORRER TODAS LAS MATERIAS -->
+                                    <td><?= date('d/m/Y', strtotime($alumno->fecha_nacimiento)); ?></td>
+                                    
                                     <td>
-                                        <ul>
-                                            <?php
-                                            foreach ($materias as $materias) ?>
-                                            <li><?php echo $materias->nombre; ?></li>
-                                        </ul>
-                                    </td> 
-                        <!-- BOTONES EDITAR-ELIMINAR  -->
+                                        <?php
+                                        $materias = $alumno->materias(); // Obtener las materias de este alumno
+                                        if (!empty($materias)) {
+                                            echo "<ul>";
+                                            foreach ($materias as $materia) {
+                                                echo "<li>" . ($materia->nombre) . "</li>";
+                                            }
+                                            echo "</ul>";
+                                        } else {
+                                            echo "No tiene materias asignadas";
+                                        }
+                                        ?>
+                                    </td>
+                                    <!-- BOTONES EDITAR-ELIMINAR  -->
                                     <td>
                                         <div class="btn-group">
-                                            <a href="editarAlumno.php?id=<?= $alumno->id; ?> " class="btn-warning btn-sm">editar</a>
-                                            <a href="eliminarAlumno.php?id=<?= $alumno->id; ?> " class="btn-danger btn-sm">eliminar</a>
+                                            <a href="editarAlumno.php?id=<?= $alumno->id_alumnos; ?> " class="btn-warning btn-sm">editar</a>
+                                            <a href="eliminarAlumno.php?id=<?= $alumno->id_alumnos; ?> " class="btn-danger btn-sm">eliminar</a>
                                         </div>
                                     </td>
                                 </tr>

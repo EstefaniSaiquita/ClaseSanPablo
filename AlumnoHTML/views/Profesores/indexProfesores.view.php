@@ -46,24 +46,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- <tr>
-        <td>1</td>
-        <td>Estefani</td>
-        <td>Saiquita</td>
-        <td>21.12.2002</td>
-    </tr> -->
                             <?php
                             foreach ($profesores as $profesor) { ?>
                                 <tr>
-                                    <td><?= $profesor->id; ?></td>
+                                    <td><?= $profesor->id_profesores; ?></td>
                                     <td><?= $profesor->nombre; ?></td>
                                     <td><?= $profesor->apellido; ?></td>
                                     <td><?= $profesor->materia_id; ?></td>
 
                                     <td> <!-- BOTONES EDITAR-ELIMINAR  -->
                                         <div class="btn-group">
-                                            <a href="editarProfesores.php?id=<?= $profesor->id; ?> " class="btn-warning btn-sm">editar</a>
-                                            <a href="eliminarProfesores.php?id=<?= $profesor->id; ?> " class="btn-danger btn-sm">eliminar</a>
+                                            <a href="editarProfesores.php?id=<?= $profesor->id_profesores; ?> " class="btn-warning btn-sm">editar</a>
+                                            <a href="eliminarProfesores.php?id=<?= $profesor->id_profesores; ?> " class="btn-danger btn-sm">eliminar</a>
                                         </div>
                                     </td>
                                 </tr>

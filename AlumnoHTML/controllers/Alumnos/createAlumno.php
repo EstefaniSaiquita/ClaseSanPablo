@@ -1,6 +1,10 @@
 <?php
 
 require_once __DIR__ . "../../../model/alumno.php";
+require_once __DIR__ . "../../../model/materias.php";
+
+$materias = Materias::all();
+var_dump($materias);
 
 if (isset($_POST['enviarFormulario'])) {
     $nombre = $_POST['nombre'];
@@ -11,7 +15,10 @@ if (isset($_POST['enviarFormulario'])) {
     $alumno->nombre = $nombre;
     $alumno->apellido = $apellido;
     $alumno->fecha_nacimiento = $fecha_nacimiento;
-    $alumno->create();
+
+    $asignacion = $_POST['seleccionMaterias'];
+    $alumno->create($asignacion);
+    
     
     header('location: ../../controllers/Alumnos/indexAlumno.php');
 }
