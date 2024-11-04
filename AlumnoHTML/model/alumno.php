@@ -51,9 +51,13 @@ class Alumno extends Conexion
     public function delete()
     {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "DELETE FROM alumnos WHERE id_alumno = ?");
+        $pre = mysqli_prepare($this->con, "DELETE FROM alumnos WHERE id_alumnos = ?");
         $pre->bind_param("i", $this->id_alumnos);
         $pre->execute();
+
+        // $pre = mysqli_prepare($this->con, "DELETE FROM alumnos_materias WHERE id_alumno = ?");
+        // $pre->bind_param("i", $this->id_alumno);
+        // $pre-> execute();
     }
 
     public function update()
@@ -62,6 +66,16 @@ class Alumno extends Conexion
         $pre = mysqli_prepare($this->con, "UPDATE alumnos SET nombre=?, apellido=?, fecha_nacimiento=? WHERE id_alumnos= ?");
         $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->fecha_nacimiento, $this->id_alumnos);
         $pre->execute();
+
+        // $borrar= mysqli_prepare($this->con, "DELETE FROM alumnos_materias WHERE id_alumno=?");
+        // $borrar->bind_param("i", $this->id_alumno);
+        // $borrar->execute();
+
+        // foreach($asignacion as $asignaciones){
+        //     $insertar = mysqli_prepare($this->con, "INSERT INTO alumnos_materias (id_alumno, id_materia)VALUES (?,?)");
+        //     $insertar->bind_param("ii",$this->id, $asignaciones);
+        //     $insertar->execute();
+        // }
     }
 
 // PARA SELECCIONAR MUCHAS MATERIAS
@@ -79,7 +93,6 @@ class Alumno extends Conexion
         }
         return $materias;
     }
-
     public function asignarMateria($id_materia)
     {
         $this->conectar();

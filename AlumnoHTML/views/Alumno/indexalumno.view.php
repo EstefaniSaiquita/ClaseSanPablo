@@ -26,7 +26,7 @@
 <body>
     <a href="../Materias/indexMaterias.php"> <button>Materias</button></a>
     <a href="../Profesores/indexProfesores.php"> <button>Profesores</button></a>
-    <a href=""><button>Dashboard</button></a>
+    <a href="../../dashboard/charts.php"><button>Dashboard</button></a>
     <div class="bs-example">
         <div class="container">
             <div class="row">
