@@ -4,7 +4,6 @@ require_once __DIR__ . "../../../model/alumno.php";
 require_once __DIR__ . "../../../model/materias.php";
 
 $materias = Materias::all();
-var_dump($materias);
 
 if (isset($_POST['enviarFormulario'])) {
     $nombre = $_POST['nombre'];

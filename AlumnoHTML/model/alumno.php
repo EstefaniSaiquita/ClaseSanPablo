@@ -60,22 +60,54 @@ class Alumno extends Conexion
         // $pre-> execute();
     }
 
-    public function update()
-    {
+    // public function update($asignacion)
+    // {
+    //     $this->conectar();
+    //     $pre = mysqli_prepare($this->con, "UPDATE alumnos SET nombre=?, apellido=?, fecha_nacimiento=? WHERE id_alumnos= ?");
+    //     $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->fecha_nacimiento, $this->id_alumnos);
+    //     $pre->execute();
+
+    //     $borrar= mysqli_prepare($this->con, "DELETE FROM alumnos_materias WHERE id_alumno=?");
+    //     $borrar->bind_param("i", $this->id_alumnos);
+    //     $borrar->execute();
+
+    //     foreach($asignacion as $asignaciones){
+    //         $insertar = mysqli_prepare($this->con, "INSERT INTO alumnos_materias (id_alumno, id_materia)VALUES (?,?)");
+    //         $insertar->bind_param("ii",$this->id_alumnos, $asignaciones);
+    //         $insertar->execute();
+    //     }
+    // }   
+
+    public function update($asignacion) {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "UPDATE alumnos SET nombre=?, apellido=?, fecha_nacimiento=? WHERE id_alumnos= ?");
+        $pre = mysqli_prepare($this->con, "UPDATE alumnos SET nombre = ?, apellido = ?, fecha_nacimiento = ? WHERE id_alumnos = ?");
         $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->fecha_nacimiento, $this->id_alumnos);
         $pre->execute();
 
-        // $borrar= mysqli_prepare($this->con, "DELETE FROM alumnos_materias WHERE id_alumno=?");
-        // $borrar->bind_param("i", $this->id_alumno);
-        // $borrar->execute();
+        // Obtener las materias actuales del alumno en un array
+        $materias_actuales = [];
+        $result = mysqli_query($this->con, "SELECT id_materia FROM alumnos_materias WHERE id_alumno = $this->id_alumnos");
+        while ($row = mysqli_fetch_assoc($result)) {
+            $materias_actuales[] = $row['id_materia'];
+        }
 
-        // foreach($asignacion as $asignaciones){
-        //     $insertar = mysqli_prepare($this->con, "INSERT INTO alumnos_materias (id_alumno, id_materia)VALUES (?,?)");
-        //     $insertar->bind_param("ii",$this->id, $asignaciones);
-        //     $insertar->execute();
-        // }
+        // Recorrer las materias seleccionadas para agregar las nuevas y mantener las existentes
+        foreach ($asignacion as $materia_id) {
+            if (!in_array($materia_id, $materias_actuales)) {
+                $pre = mysqli_prepare($this->con, "INSERT INTO alumnos_materias (id_alumno, id_materia) VALUES (?, ?)");
+                $pre->bind_param("ii", $this->id_alumnos, $materia_id);
+                $pre->execute();
+            }
+        }
+
+        // Eliminar las materias que ya no están seleccionadas
+        foreach ($materias_actuales as $materia_id_actual) {
+            if (!in_array($materia_id_actual, $asignacion)) {
+                $pre = mysqli_prepare($this->con, "DELETE FROM alumnos_materias WHERE id_alumno = ? AND id_materia = ?");
+                $pre->bind_param("ii", $this->id_alumnos, $materia_id_actual);
+                $pre->execute();
+            }
+        }
     }
 
 // PARA SELECCIONAR MUCHAS MATERIAS

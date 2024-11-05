@@ -24,17 +24,20 @@
 </head>
 
 <body>
-    <a href="../Materias/indexMaterias.php"> <button>Materias</button></a>
-    <a href="../Profesores/indexProfesores.php"> <button>Profesores</button></a>
-    <a href="../../dashboard/charts.php"><button>Dashboard</button></a>
+    <div class="flex justify-left space-x-2 mt-2 mx-4">
+        <a href="../../controllers/Materias/indexMaterias.php" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition duration-300"> <button>Materias</button></a>
+        <a href="../../controllers/Profesores/indexProfesores.php" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition duration-300"> <button>Profesores</button></a>
+        <a href="../../dashboard/charts.php" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition duration-300"<button>Dashboard</button></a>
+    </div>
+
     <div class="bs-example">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="page-header clearfix">
-                        <a href="createAlumno.php">Crear Alumno</a>
-                        <h2 class="pull-left">Lista de Alumnos</h2>
+                    <div class="page-header clearfix mb-2">
+                        <a href="createAlumno.php" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition duration-300">Crear Alumno</a>
                     </div>
+                    <h2 class="pull-left text-4xl font-bold text-black">Lista de Alumnos</h2>
                     <table id="listaUsuarios" class="table table-sm table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
@@ -60,7 +63,7 @@
                                     <td><?= $alumno->nombre; ?></td>
                                     <td><?= $alumno->apellido; ?></td>
                                     <td><?= date('d/m/Y', strtotime($alumno->fecha_nacimiento)); ?></td>
-                                    
+
                                     <td>
                                         <?php
                                         $materias = $alumno->materias(); // Obtener las materias de este alumno
@@ -78,7 +81,7 @@
                                     <!-- BOTONES EDITAR-ELIMINAR  -->
                                     <td>
                                         <div class="btn-group">
-                                            <a href="editarAlumno.php?id=<?= $alumno->id_alumnos; ?> " class="btn-warning btn-sm">editar</a>
+                                            <a href="editarAlumno.php?id=<?= $alumno->id_alumnos; ?> " class="btn-warning btn-sm mx-3">editar</a>
                                             <a href="eliminarAlumno.php?id=<?= $alumno->id_alumnos; ?> " class="btn-danger btn-sm">eliminar</a>
                                         </div>
                                     </td>
@@ -110,5 +113,6 @@
         $('#listaUsuarios').DataTable({});
     });
 </script>
+<script src="https://cdn.tailwindcss.com"></script>
 
 </html>

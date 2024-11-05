@@ -39,8 +39,22 @@
                                 <label for="fecha_nacimiento">Fecha de Nacimiento</label>
                                 <input type="date" value="<?= $alumno->fecha_nacimiento ?>" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control">
                             </div>
+                            <?php 
+                            foreach ($materias as $materia){
+                                $tieneMaterias = false;
+                                foreach ($materiasAlumnos as $materiaAlumno) {
+                                    if ($materia->id == $materiaAlumno->id) {
+                                        $tieneMaterias = true;
+                                    }
+                                } ?>
+
+                                <input <?php if ($tieneMaterias) {
+                                    echo "checked";
+                                }?> type="checkbox" name="seleccionMaterias[]" id="" value="<?=$materia->id?>"><?=$materia->nombre?>
+                                <?php } ?>    
+                                
                             <button type="submit" name="actualizarDatos" class="btn btn-primary">
-                                <i class="fas fa fa-send">Actualizar</i>
+                            <i class="fas fa fa-send">Actualizar</i>
                             </button>
 
                         </form>
@@ -52,5 +66,4 @@
     </div>
 
 </body>
-
 </html>

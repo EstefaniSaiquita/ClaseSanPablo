@@ -16,25 +16,29 @@
     <script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <!-- DataTables JBootstrap -->
     <script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
-    <style type="text/css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <style type="text/css">
         .bs-example {
             margin: 20px;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
-    <a href="../Materias/indexMaterias.php"> <button>Materias</button></a>
-    <a href="../Alumnos/indexAlumno.php"><button>Alumnos</button></a>
-    <a href=""><button>Dashboard</button></a>
+    <div class="flex justify-left space-x-2 mt-2 mx-4 mb-4">
+        <a href="../Materias/indexMaterias.php" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition duration-300"> <button>Materias</button></a>
+        <a href="../Alumnos/indexAlumno.php" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition duration-300"><button>Alumnos</button></a>
+        <a href="../../dashboard/charts.php" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition duration-300"><button>Dashboard</button></a>
+    </div>
+
     <div class="bs-example">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="page-header clearfix">
-                        <a href="createProfesores.php">Crear Profesor</a>
-                        <h2 class="pull-left">Lista de Profesores</h2>
+                    <div class="page-header clearfix mb-2 mt_4 bg-red">
+                        <a href="createProfesores.php" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition duration-300">Crear Profesor</a>
                     </div>
+                    <h1 class="pull-left text-4xl font-bold text-black">Lista de Profesores</h1>
                     <table id="listaUsuarios" class="table table-sm table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
@@ -56,7 +60,7 @@
 
                                     <td> <!-- BOTONES EDITAR-ELIMINAR  -->
                                         <div class="btn-group">
-                                            <a href="editarProfesores.php?id=<?= $profesor->id_profesores; ?> " class="btn-warning btn-sm">editar</a>
+                                            <a href="editarProfesores.php?id=<?= $profesor->id_profesores; ?> " class="btn-warning btn-sm mx-3">editar</a>
                                             <a href="eliminarProfesores.php?id=<?= $profesor->id_profesores; ?> " class="btn-danger btn-sm">eliminar</a>
                                         </div>
                                     </td>
