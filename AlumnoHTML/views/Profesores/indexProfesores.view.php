@@ -45,7 +45,7 @@
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
-                                <th>Materia_id</th>
+                                <th>Materia</th>
                                 <th>Accion</th>
                             </tr>
                         </thead>

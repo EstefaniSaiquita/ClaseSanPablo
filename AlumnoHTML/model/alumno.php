@@ -14,13 +14,13 @@ class Alumno extends Conexion
         $pre->bind_param("sss", $this->nombre, $this->apellido, $this->fecha_nacimiento); //bind_param metodo de seguridad
         $pre->execute(); //ejecuta
 
-        $id = $this -> id_alumnos = mysqli_insert_id($this->con);
+        $id = $this->id_alumnos = mysqli_insert_id($this->con);
         foreach ($asignacion as $materia) {
-            $pre = mysqli_prepare($this -> con, "INSERT INTO alumnos_materias (id_alumno, id_materia) VALUES (?, ?)");
-            $pre -> bind_param("ii",  $id,  $materia);
-            $pre -> execute();
+            $pre = mysqli_prepare($this->con, "INSERT INTO alumnos_materias (id_alumno, id_materia) VALUES (?, ?)");
+            $pre->bind_param("ii",  $id,  $materia);
+            $pre->execute();
         }
-    return $id;
+        return $id;
     }
 
     public static function all()
@@ -31,7 +31,7 @@ class Alumno extends Conexion
         $result->execute();
         $valoresDb = $result->get_result();
         $alumnos = [];
-        while ($alumno = $valoresDb->fetch_object(Alumno::class)) {
+        while ($alumno = $valoresDb->fetch_object(Alumno::class)) { //fetch_object
             $alumnos[] = $alumno;
         }
         return $alumnos;
@@ -51,34 +51,18 @@ class Alumno extends Conexion
     public function delete()
     {
         $this->conectar();
-        $pre = mysqli_prepare($this->con, "DELETE FROM alumnos WHERE id_alumnos = ?");
+
+        $pre = mysqli_prepare($this->con, "DELETE FROM alumnos_materias WHERE id_alumno = ?");
         $pre->bind_param("i", $this->id_alumnos);
         $pre->execute();
 
-        // $pre = mysqli_prepare($this->con, "DELETE FROM alumnos_materias WHERE id_alumno = ?");
-        // $pre->bind_param("i", $this->id_alumno);
-        // $pre-> execute();
+        $pre = mysqli_prepare($this->con, "DELETE FROM alumnos WHERE id_alumnos = ?");
+        $pre->bind_param("i", $this->id_alumnos);
+        $pre->execute();
     }
 
-    // public function update($asignacion)
-    // {
-    //     $this->conectar();
-    //     $pre = mysqli_prepare($this->con, "UPDATE alumnos SET nombre=?, apellido=?, fecha_nacimiento=? WHERE id_alumnos= ?");
-    //     $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->fecha_nacimiento, $this->id_alumnos);
-    //     $pre->execute();
-
-    //     $borrar= mysqli_prepare($this->con, "DELETE FROM alumnos_materias WHERE id_alumno=?");
-    //     $borrar->bind_param("i", $this->id_alumnos);
-    //     $borrar->execute();
-
-    //     foreach($asignacion as $asignaciones){
-    //         $insertar = mysqli_prepare($this->con, "INSERT INTO alumnos_materias (id_alumno, id_materia)VALUES (?,?)");
-    //         $insertar->bind_param("ii",$this->id_alumnos, $asignaciones);
-    //         $insertar->execute();
-    //     }
-    // }   
-
-    public function update($asignacion) {
+    public function update($asignacion)
+    {
         $this->conectar();
         $pre = mysqli_prepare($this->con, "UPDATE alumnos SET nombre = ?, apellido = ?, fecha_nacimiento = ? WHERE id_alumnos = ?");
         $pre->bind_param("sssi", $this->nombre, $this->apellido, $this->fecha_nacimiento, $this->id_alumnos);
@@ -110,7 +94,7 @@ class Alumno extends Conexion
         }
     }
 
-// PARA SELECCIONAR MUCHAS MATERIAS
+    // PARA SELECCIONAR MUCHAS MATERIAS
 
     public function materias()
     {
@@ -129,7 +113,7 @@ class Alumno extends Conexion
     {
         $this->conectar();
         $pre = mysqli_prepare($this->con, "INSERT INTO alumnos_materias (id_alumno, id_materia) VALUES(?,?)");
-        $pre->bind_param("ii", $this->id_alumnos,$id_materia);
+        $pre->bind_param("ii", $this->id_alumnos, $id_materia);
         $pre->execute();
     }
 }
