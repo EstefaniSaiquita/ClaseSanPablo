@@ -74,7 +74,6 @@ class Alumno extends Conexion
         while ($row = mysqli_fetch_assoc($result)) {
             $materias_actuales[] = $row['id_materia'];
         }
-
         // Recorrer las materias seleccionadas para agregar las nuevas y mantener las existentes
         foreach ($asignacion as $materia_id) {
             if (!in_array($materia_id, $materias_actuales)) {
@@ -83,7 +82,6 @@ class Alumno extends Conexion
                 $pre->execute();
             }
         }
-
         // Eliminar las materias que ya no están seleccionadas
         foreach ($materias_actuales as $materia_id_actual) {
             if (!in_array($materia_id_actual, $asignacion)) {
@@ -93,9 +91,7 @@ class Alumno extends Conexion
             }
         }
     }
-
     // PARA SELECCIONAR MUCHAS MATERIAS
-
     public function materias()
     {
         $this->conectar();

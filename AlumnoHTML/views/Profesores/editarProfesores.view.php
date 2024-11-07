@@ -43,7 +43,7 @@
                                 <select class="form-control" name="materia_id" id="materia_id">
                                     <option hiden value="">Seleccione una materia</option>
                                 <?php foreach ($materias as $materia){ ?>
-                                    <option value="<?=$materia->id?>"><?=$materia->nombre?></option>
+                                    <option value="<?=$materia->id?>"<?= $Profesores->materia_id == $materia->id ? 'selected' : ' ' ?>><?=$materia->nombre?></option>
                                 <?php } ?>
                                 </select>
 

@@ -20,5 +20,3 @@ class AlumnoMaterias
         require_once __DIR__ . "../../../views/Alumno/asignarMateria.view.php";
     }
 }
-
-
