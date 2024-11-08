@@ -38,6 +38,7 @@
                                 <label for="apellido">Apellido</label>
                                 <input  value="<?= $Profesores->apellido ?>"type="text" name="apellido" id="apellido" class="form-control">
                             </div>
+
                             <div class="form-group">
                                 <label for="materia_id">Materia</label>
                                 <select class="form-control" name="materia_id" id="materia_id">
@@ -46,8 +47,6 @@
                                     <option value="<?=$materia->id?>"<?= $Profesores->materia_id == $materia->id ? 'selected' : ' ' ?>><?=$materia->nombre?></option>
                                 <?php } ?>
                                 </select>
-
-                                
                             </div>
 
                             <button type="submit" name="actualizarDatos" class="btn btn-primary">

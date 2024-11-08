@@ -56,7 +56,7 @@
                                     <td><?= $profesor->id_profesores; ?></td>
                                     <td><?= $profesor->nombre; ?></td>
                                     <td><?= $profesor->apellido; ?></td>
-                                    <td><?= $profesor->materia_id; ?></td>
+                                    <td><?= $profesor->materia()->nombre; ?></td>
 
                                     <td> <!-- BOTONES EDITAR-ELIMINAR  -->
                                         <div class="btn-group">

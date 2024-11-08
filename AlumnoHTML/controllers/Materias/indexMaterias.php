@@ -4,6 +4,7 @@ require_once __DIR__ ."../../../model/materias.php";
 
 $materias = Materias::all(); //guarda en una variable la info del metodo all
 
+
 // // $profesor = Profesor::getById(1);
 
 // $materia = Materias::getById(2);

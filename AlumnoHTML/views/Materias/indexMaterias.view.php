@@ -43,6 +43,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nombre</th>
+                                <th>Profesor Asignado</th>
                                 <th>Accion</th>
                             </tr>
                         </thead>
@@ -52,6 +53,7 @@
                                 <tr>
                                     <td><?= $materia->id; ?></td>
                                     <td><?= $materia->nombre; ?></td>
+                                    <td><?= $materia->profesor_id; ?></td>
 
                                     <td> <!-- BOTONES EDITAR-ELIMINAR  -->
                                         <div class="btn-group">

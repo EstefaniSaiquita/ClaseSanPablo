@@ -75,7 +75,7 @@ class Materias extends Conexion
     {
         $this->conectar();
         $pre = mysqli_prepare($this->con, "UPDATE materias SET nombre=? WHERE id= ?");
-        $pre->bind_param("si", $this->nombre, $this->id);
+        $pre->bind_param("sii", $this->nombre, $this->id);
         $pre->execute();
     }
 
